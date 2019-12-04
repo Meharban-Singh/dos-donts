@@ -1,22 +1,25 @@
 <?php
 
-	$file = "C:\\xampp\\htdocs\\dos-donts\\dos\\" . $_GET["country"];
-	$dosFile = fopen($file, "r");
-	$dontsFile = fopen($file, "r");
+	$dosFile = "C:\\xampp\\htdocs\\dos-donts\\dos\\" . $_GET["country"];
+	$dontsFile = "C:\\xampp\\htdocs\\dos-donts\\donts\\" . $_GET["country"];
 
-	if($dosFile == false)
+	$dosFileObj = fopen($dosFile, "r");
+	$dontsFileObj = fopen($dontsFile, "r");
+
+	if($dosFileObj == false)
 		echo("Error in opening Dos File");
-	if($dontsFile == false)
+	if($dontsFileObj == false)
 		echo("Error in opening Donts File");
 
-	$dosFileText = fread($dosFile,filesize($file));
-	$dontsFileText = fread($dontsFile, filesize($file));
+	$dosFileText = fread($dosFileObj,filesize($dosFile));
+	$dontsFileText = fread($dontsFileObj, filesize($dontsFile));
 
-	fclose($dosFile);
-	fclose($dontsFile);
+	fclose($dosFileObj);
+	fclose($dontsFileObj);
 
-	echo($dosFileText);
-	echo("\n\n\n");
-	echo($dontsFileText);
+	$obj = new \stdClass();
+	$obj->dos = $dosFileText;
+	$obj->donts = $dontsFileText;
 
+	echo json_encode($obj);
 ?>
