@@ -1,5 +1,7 @@
 <?php
-
+	
+	header("Access-Control-Allow-Origin: *");
+	
 	$dosFile = "C:\\xampp\\htdocs\\dos-donts\\dos\\" . $_GET["country"];
 	$dontsFile = "C:\\xampp\\htdocs\\dos-donts\\donts\\" . $_GET["country"];
 
