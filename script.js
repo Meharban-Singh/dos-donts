@@ -1,5 +1,3 @@
-let obj;
-
 window.onload = init;
 
 function init() {
@@ -10,13 +8,14 @@ function getData(evt) {
 	evt.preventDefault();
 
 	let country = verifyCountry();
-	console.log(country);
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', "http://localhost/dos-donts/server.php?country=" + country);
 	xhr.send();
 
 	xhr.onload = () => {
-		obj = JSON.parse(xhr.response);
+		let obj = JSON.parse(xhr.response);
+		document.getElementById("doContent").innerHTML = obj['dos'];
+		document.getElementById("dontContent").innerHTML = obj['donts'];
 	}
 }
 

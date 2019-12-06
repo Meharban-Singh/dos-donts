@@ -1,0 +1,70 @@
+.heading {
+	width:100%;
+	text-align: center;
+	border-bottom: dotted 1px black;
+	padding: 8px 0px;
+	font-size: 20px;
+	font-weight: bold; 
+	font-variant: small-caps;
+	font-family: "lucida", monospace;
+}
+
+#dos .heading {
+	color: green;
+}
+
+#donts .heading {
+	color: red;
+}
+
+#main{
+	display:flex;
+	justify-content: space-around;
+	margin:10%;
+} 
+
+#main > * {
+	width: calc(50% - 20px);	
+	height: 500px;
+	border-style: ridge;
+	border-width: 5px;
+	border-radius: 10px;
+	background-image: radial-gradient(rgba(140,140, 140,0.1), rgba(140, 140, 140, 0.12));
+}
+
+@media all and (max-width: 720px) {
+	#main {
+		display: block;
+		width: 80%;
+	}
+
+	#main > * {
+		margin-bottom: 20px;
+		width:100%;
+	}
+}
+
+#searchBox {
+	width: 100%;
+	height: 150px;
+    border: 2px solid black;
+    position: relative;
+}
+
+form > input[type="text"] {
+	border: 1px solid grey;
+	padding:10px;
+	border-radius: 50px;
+	width:70%;
+	max-height: 30px;
+	position: absolute;
+    left:0;
+    right: 0;
+    top:0;
+    bottom:0;
+    margin: auto;
+}
+
+form > input[type="submit"] {
+	
+}
