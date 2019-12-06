@@ -13,7 +13,7 @@ function getData(evt) {
 	xhr.send();
 
 	xhr.onload = () => {
-		let obj = JSON.parse(xhr.response);
+		let obj = JSON.parse(xhr.response);ss
 		document.getElementById("doContent").innerHTML = obj['dos'];
 		document.getElementById("dontContent").innerHTML = obj['donts'];
 	}
