@@ -20,5 +20,7 @@ function getData(evt) {
 }
 
 function verifyCountry() {
-	return document.getElementsByName("country")[0].value;
+	let temp = document.getElementsByName("country")[0].value;
+	if(temp == null || temp == undefined || temp == "")
+	return temp;
 }
