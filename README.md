@@ -1,8 +1,11 @@
 # dos-donts  
-  
-Files  
-========================================================  
-  
+
+A web app to tell you the things to do and not to do when you visit a country.
+
+### Files  
+
+USES -> html5, css3, js, php
+
 index.html -> the main runner file  
 script.js -> js controlling the index file, it gets data from php using input and display it in index file  
 style.css -> front end styling  

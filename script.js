@@ -1,17 +1,16 @@
-/*
-a variable 'countries' has been obtained from another script (files.php), while
-gets all the names of files from folder 'dos' and makes an array of file names
-(and hence array of names of all the countries in system).
-*/
 window.onload = init;
 
 function init() {
 	autocomplete(document.getElementsByName("country")[0], countries);
 }
 
+/**
+ * Sends AJAX req to server to get dos and donts file of country as specified by the user
+ */
 function getData() {
 	let country = verifyCountry();
 
+  //if there is atleat one country in the system that matches the search from user, get its files via AJAX req
 	if(country != "-1") {
 		let xhr = new XMLHttpRequest();
 		xhr.open('GET', "http://localhost/dos-donts/server.php?country=" + country);
@@ -29,24 +28,35 @@ function getData() {
 	}
 }
 
+
+/**
+ * Verifies if a country exists in the system. 
+ * 
+ * @return If a country exists, return the formatted country name else return -1
+ */
 function verifyCountry() {
-	let temp = document.getElementsByName("country")[0].value.trim().split(' ');
-	let out = '';
-
-	for(let i = 0; i < temp.length; i++) {
-		out += temp[i].charAt(0).toUpperCase();
-		out += temp[i].substring(1, temp[i].length).toLowerCase();
-	}
-
-	if(countries.indexOf(out) > -1)
-		return out;
+  //Format input -> remove leading, trailing spaces, and convert to PascalCase
+  let formattedSearch = document.getElementsByName("country")[0].value.trim()
+    .split(' ').map(name => 
+      name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+    ).join('');
+	
+	if(countries.indexOf(formattedSearch) > -1)
+		return formattedSearch;
 
 	//In case of error alert the user and dont send request
-	return "-1";
+	return -1;
 }
 
 
 //https://www.w3schools.com/howto/howto_js_autocomplete.asp
+/**
+ * Auto-completes user input, using an input element and an araay
+ * of values to auto complete from. 
+ * 
+ * @param {input element} inp 
+ * @param {array to acutocomplete from} arr 
+ */
 function autocomplete(inp, arr) {
   let currentFocus;
 
